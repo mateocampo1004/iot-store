@@ -11,15 +11,15 @@ export class BaseService<T, CreateDto, UpdateDto> {
     return this.prisma[this.model.name].findMany();
   }
 
-  async findOne(id: string): Promise<T | null> {
+  async findOne(id: number): Promise<T | null> {
     return this.prisma[this.model.name].findUnique({ where: { id } });
   }
 
-  async update(id: string, data: UpdateDto): Promise<T> {
+  async update(id: number, data: UpdateDto): Promise<T> {
     return this.prisma[this.model.name].update({ where: { id }, data });
   }
 
-  async remove(id: string): Promise<T> {
+  async remove(id: number): Promise<T> {
     return this.prisma[this.model.name].delete({ where: { id } });
   }
 }

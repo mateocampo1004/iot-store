@@ -1,44 +1,28 @@
-// src/prisma/seed.ts
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('Seeding database...');
-
-  const productsData = [
-    {
-      name: 'Product 1',
-      description: 'Description for Product 1',
-      price: 19.99,
-      stock: 100,
-    },
-    {
-      name: 'Product 2',
-      description: 'Description for Product 2',
-      price: 29.99,
-      stock: 50,
-    },
-    {
-      name: 'Product 3',
-      description: 'Description for Product 3',
-      price: 39.99,
-      stock: 200,
-    },
+  const products = [
+    { name: 'PlayStation 5', description: 'La mejor consola', stock: 100, price: 499.99 },
+    { name: 'Xbox Series X', description: 'Potente consola de Microsoft', stock: 50, price: 499.99 },
+    { name: 'Nintendo Switch', description: 'Consola híbrida', stock: 200, price: 299.99 },
+    { name: 'PlayStation 4', description: 'Consola de generación anterior', stock: 150, price: 299.99 },
+    { name: 'Xbox One', description: 'Consola de generación anterior de Microsoft', stock: 75, price: 299.99 }
   ];
 
-  for (const product of productsData) {
+  for (const product of products) {
     await prisma.product.create({
-      data: product,
+      data: product
     });
   }
 
-  console.log('Database seeding completed.');
+  console.log('Seed data has been created successfully!');
 }
 
 main()
-  .catch((error) => {
-    console.error(error);
+  .catch((e) => {
+    console.error(e);
     process.exit(1);
   })
   .finally(async () => {

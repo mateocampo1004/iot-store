@@ -1,16 +1,7 @@
 // src/products/dto/update-product.dto.ts
-import { ApiProperty } from '@nestjs/swagger';
+import {  PartialType } from '@nestjs/swagger';
+import { CreateProductDto } from './create-product.dto';
 
-export class UpdateProductDto {
-  @ApiProperty({ required: false })
-  name?: string;
+export class UpdateProductDto extends PartialType(CreateProductDto){
 
-  @ApiProperty({ required: false })
-  description?: string;
-
-  @ApiProperty({ required: false })
-  price?: number;
-
-  @ApiProperty({ required: false })
-  stock?: number;
 }
