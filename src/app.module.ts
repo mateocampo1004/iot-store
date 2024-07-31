@@ -14,6 +14,7 @@ import configuration from './config/configuration';
     }),
     ProductsModule,
     PrismaModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],
